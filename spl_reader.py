@@ -4,7 +4,7 @@ import datetime
 import sys
 import signal
 import subprocess
-from functools import partial
+import shlex
 
 class SplReader:
 	def setup(self, seconds):
@@ -59,7 +59,7 @@ class SplReader:
 		#bash_command = "scp -i ~/Desktop/phonometer {} mattia.vincenzi2@studio.unibo.it@isi-studio8bis.csr.unibo.it:~/gathered_data/phonometer/".format(self.name)
 		#process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
 		#output, error = process.communicate()
-		subprocess.call(['./file_transfer.sh {}'.format(self.name)])
+		subprocess.call(shlex.split('./file_transfer.sh {}'.format(self.name)))
 
 # Command line params
 if len(sys.argv) != 2:
