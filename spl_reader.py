@@ -11,7 +11,7 @@ class SplReader:
 		"""
 			Function used to setup and return logger with specified format.
 		"""
-		self.name = "phonometer-{}.csv".format(str(datetime.date.today()))
+		self.name = "/home/udooer/Desktop/spl_phono_reader/phonometer-{}.csv".format(str(datetime.date.today()))
 		self.file_logger = logging.basicConfig(
         		filename = self.name,
         		format = "%(asctime)s %(message)s", # Format date_time data.
@@ -59,7 +59,7 @@ class SplReader:
 		#bash_command = "scp -i ~/Desktop/phonometer {} mattia.vincenzi2@studio.unibo.it@isi-studio8bis.csr.unibo.it:~/gathered_data/phonometer/".format(self.name)
 		#process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
 		#output, error = process.communicate()
-		subprocess.call(shlex.split('./file_transfer.sh {}'.format(self.name)))
+		subprocess.call(shlex.split('/home/udooer/Desktop/spl_phono_reader/file_transfer.sh {}'.format(self.name)))
 
 # Command line params
 if len(sys.argv) != 2:
