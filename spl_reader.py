@@ -17,7 +17,7 @@ class SplReader:
         		format = "%(asctime)s %(message)s", # Format date_time data.
         		level = logging.INFO)
 		
-		print("Printing data on {}".format(name))
+		print("Printing data on {}".format(self.name))
 
 		self.file_logger = logging.getLogger(__name__) # Get personalized logger.
 
@@ -55,9 +55,11 @@ class SplReader:
 		"""
 			Send data to remote server.
 		"""
-		bash_command = "scp -i ~/.ssh/phonometer {} mattia.vincenzi2@studio.unibo.it@isi-studio8bis.csr.unibo.it:./gathered_data/phonometer/".format(self.name)
-		process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
-		output, error = process.communicate()
+		#print("scp -i ~/Desktop/phonometer {} mattia.vincenzi2@studio.unibo.it@isi-studio8bis.csr.unibo.it:~/gathered_data/phonometer/".format(self.name))
+		#bash_command = "scp -i ~/Desktop/phonometer {} mattia.vincenzi2@studio.unibo.it@isi-studio8bis.csr.unibo.it:~/gathered_data/phonometer/".format(self.name)
+		#process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
+		#output, error = process.communicate()
+		subprocess.call(['./file_transfer.sh {}'.format(self.name)])
 
 # Command line params
 if len(sys.argv) != 2:
